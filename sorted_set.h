@@ -241,6 +241,7 @@ public:
     }
     key_tree().erase(find);
     score_tree().erase(&*find);
+    delete &*find;
     return 1;
   }
 
