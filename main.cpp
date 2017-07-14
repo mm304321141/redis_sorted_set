@@ -20,11 +20,14 @@ int main()
   crash_assert(ss.zcount(0, 500) == 2);
   crash_assert(ss.zrem("789") == 1);
   crash_assert(ss.zcard() == 2);
-  crash_assert(ss.zincrby("123", 321 - 123) == 321);
+  crash_assert(ss.zincrby("123", 987 - 123) == 987);
   crash_assert(ss.zadd("456", 654) == 654);
-  crash_assert(ss.zincrby("789", 987) == 987);
-  ss.zrange(0, -1, [](std::string const &key, double score)
+  crash_assert(ss.zincrby("789", 321) == 321);
+  ss.zrange(-3, -1, [&ss](std::string const &key, double score)
   {
+    auto score_ptr = ss.zscore(key);
+    crash_assert(score_ptr != nullptr);
+    crash_assert(*score_ptr == score);
   });
 }
 

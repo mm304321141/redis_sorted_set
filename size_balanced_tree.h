@@ -171,7 +171,7 @@ namespace zzz
         {
             return pair_ii_t(bst_lower_bound_(min), bst_upper_bound_(max));
         }
-        pair_ii_t slice(ptrdiff_t begin = 0, ptrdiff_t end = std::numeric_limits<ptrdiff_t>::max())
+        pair_ii_t slice(ptrdiff_t begin, ptrdiff_t end = -1)
         {
             ptrdiff_t size_s = size();
             if(begin < 0)
